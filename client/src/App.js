@@ -37,43 +37,28 @@ const UnhandledErrorWithContext = withContext(UnhandledError);
 
 
 
-function App(props) {
-  //console.log(props.context.authenticatedUser);
-  
-  return (
-    
+function App() {
+    return (
         <div>
-          
-          <HeaderWithContext />
+            <HeaderWithContext />
         
             <Switch>
-              <Route exact path='/' component={CoursesWithContext} />
-              <Route exact path='/courses' component={CoursesWithContext}/>
-              <Route exact path='/signin' component={UserSignInWithContext}/>
-              <Route exact path='/signup' component={UserSignUpWithContext}/>
-              <Route exact path='/signout' component = {UserSignOutWithContext}/>
-              <PrivateRouteWithContext exact path="/courses/create" component={CreateCourseWithContext} />
-              <PrivateRouteWithContext exact path="/courses/:id/update" component={UpdateCourseWithContext} />
-              <PrivateRouteWithContext exact path="/courses/:id/delete" component={UpdateCourseWithContext} />
-              
-              
-              <Route exact path="/courses/:id" component={CourseDetailsWithContext}/>
-                  
-              
-              
-                
+                <Route exact path='/' component={CoursesWithContext} />
+                <Route exact path='/courses' component={CoursesWithContext}/>
+                <Route exact path='/signin' component={UserSignInWithContext}/>
+                <Route exact path='/signup' component={UserSignUpWithContext}/>
+                <Route exact path='/signout' component = {UserSignOutWithContext}/>
+                <PrivateRouteWithContext exact path="/courses/create" component={CreateCourseWithContext} />
+                <PrivateRouteWithContext exact path="/courses/:id/update" component={UpdateCourseWithContext} />
+                <PrivateRouteWithContext exact path="/courses/:id/delete" component={UpdateCourseWithContext} />
+                <Route exact path="/courses/:id" component={CourseDetailsWithContext}/>
                 <Route path="/notfound" component={NotFoundWithContext} />
-             
                 <Route path="/forbidden" component={ForbiddenWithContext} />
                 <Route path="/error" component={UnhandledErrorWithContext} />
                 <Route component = {NotFoundWithContext} />
-                
-                
-              </Switch>
-          </div>
-      
-
-  );
+            </Switch>
+        </div>
+    );
 }
 
 export default App;
