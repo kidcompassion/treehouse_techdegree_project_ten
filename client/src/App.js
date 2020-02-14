@@ -10,8 +10,6 @@ import NotFound from './components/NotFound';
 import Forbidden from './components/Forbidden';
 import UnhandledError from './components/UnhandledError';
 import { Header } from './components/Header';
-
-
 import { withContext }  from './components/Context';
 import PrivateRoute from './PrivateRoute';
 
@@ -34,8 +32,6 @@ const PrivateRouteWithContext = withContext(PrivateRoute);
 const NotFoundWithContext = withContext(NotFound);
 const ForbiddenWithContext = withContext(Forbidden);
 const UnhandledErrorWithContext = withContext(UnhandledError);
-
-
 
 function App() {
     return (
