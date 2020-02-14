@@ -37,9 +37,9 @@ class UpdateCourse extends React.Component {
 	  let currentComponent = this;
       axios.get(`http://localhost:5000/api/courses/${currentCourseId}`)
           .then((response)=>{
-			// if course id does not exist
+			// if course id does exist
             if(response.data != null){
-				// and if the course's owner id does not that of the currently authed user
+				// and if the course's owner id does not match that of the currently authed user
             	if(response.data.User.id !== this.props.context.authenticatedUser.id){
 					// punt them to the forbidden page
               		this.props.history.push("/forbidden");
@@ -49,7 +49,10 @@ class UpdateCourse extends React.Component {
                   		courseData: response.data,
               		});
             	}
-            }
+            }else {
+				// If course id does not exist, then punt the user to /notfound
+				this.props.history.push("/notfound");	
+			}
         })
   	}
 
