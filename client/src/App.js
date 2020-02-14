@@ -1,6 +1,6 @@
 import React from 'react';
 import Courses from './components/Courses';
-import CourseDetails from './components/CourseDetails';
+import CourseDetail from './components/CourseDetail';
 import UserSignIn from './components/UserSignIn';
 import UserSignUp from './components/UserSignUp';
 import CreateCourse from './components/CreateCourse'
@@ -29,7 +29,7 @@ const CreateCourseWithContext = withContext(CreateCourse);
 const UserSignOutWithContext = withContext(UserSignOut);
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
-const CourseDetailsWithContext = withContext(CourseDetails);
+const CourseDetailWithContext = withContext(CourseDetail);
 const PrivateRouteWithContext = withContext(PrivateRoute);
 const NotFoundWithContext = withContext(NotFound);
 const ForbiddenWithContext = withContext(Forbidden);
@@ -51,7 +51,7 @@ function App() {
                 <PrivateRouteWithContext exact path="/courses/create" component={CreateCourseWithContext} />
                 <PrivateRouteWithContext exact path="/courses/:id/update" component={UpdateCourseWithContext} />
                 <PrivateRouteWithContext exact path="/courses/:id/delete" component={UpdateCourseWithContext} />
-                <Route exact path="/courses/:id" component={CourseDetailsWithContext}/>
+                <Route exact path="/courses/:id" component={CourseDetailWithContext}/>
                 <Route path="/notfound" component={NotFoundWithContext} />
                 <Route path="/forbidden" component={ForbiddenWithContext} />
                 <Route path="/error" component={UnhandledErrorWithContext} />

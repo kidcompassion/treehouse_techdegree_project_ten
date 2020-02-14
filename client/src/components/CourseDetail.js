@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown'; // Handles rendering markdown in description and materialsneeded
 import axios from 'axios';
 
-class CourseDetails extends Component{
+class CourseDetail extends Component{
 
     constructor(props){
         super(props);
@@ -53,8 +53,21 @@ class CourseDetails extends Component{
      */
     deleteCourse(event){
         event.preventDefault();
-        this.props.context.actions.deleteCourse(this.state);
-        this.props.history.push('/courses');
+        const encodedCredentials = localStorage.getItem('authHeader');
+        axios.delete(`http://localhost:5000/api/courses/${this.state.courseId}`,{headers: {"Authorization" : `Basic ${encodedCredentials}`} })
+            .then((response)=>{      
+               this.props.history.push('/courses')
+            }).catch(
+                (err)=>{
+                    console.log(err.response);
+                    if(err.response.status === 500){
+                        this.props.history.push('/error')
+                    }else {
+                        this.setState({errors: err.response.data.errors});
+                    }
+                }
+            )  
+            this.props.history.push('/courses');
     }
 
     render(){
@@ -119,4 +132,4 @@ class CourseDetails extends Component{
   }
 }
 
-export default CourseDetails;
+export default CourseDetail;

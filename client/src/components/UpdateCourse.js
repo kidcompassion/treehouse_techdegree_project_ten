@@ -109,7 +109,7 @@ class UpdateCourse extends React.Component {
      */
 	handleCancel(event){
   		event.preventDefault();
-  		this.props.history.push("/courses");
+  		this.props.history.goBack();
 	}
 
 
